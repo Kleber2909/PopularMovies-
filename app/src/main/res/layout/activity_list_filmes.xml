@@ -20,6 +20,14 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_list_filmes"
-        app:menu="@menu/activity_list_filmes_drawer" />
+        app:menu="@menu/activity_list_filmes_drawer" >
+
+    </android.support.design.widget.NavigationView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvListaFilmes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/activity_view_holder"/>
 
 </android.support.v4.widget.DrawerLayout>

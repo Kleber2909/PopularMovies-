@@ -1,20 +1,32 @@
 package com.fa7.popularmovies;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SimpleCursorAdapter;
+
+import com.fa7.controle.GetTMDB;
+import com.fa7.controle.LineAdapter;
+
+import java.util.ArrayList;
+
 
 public class ListFilmes extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    GetTMDB getTMDB;
+    RecyclerView recyclerView;
+    private LineAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +43,29 @@ public class ListFilmes extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        recyclerView = (RecyclerView) findViewById(R.id.rvListaFilmes);
+
+        getTMDB = new GetTMDB();
+        getTMDB.execute();
+        setupRecycler();
+    }
+
+
+    private void setupRecycler() {
+
+        // Configurando o gerenciador de layout para ser uma lista.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Adiciona o adapter que irá anexar os objetos à lista.
+        // Está sendo criado com lista vazia, pois será preenchida posteriormente.
+        mAdapter = new LineAdapter(new ArrayList<>(0));
+        recyclerView.setAdapter(mAdapter);
+
+        // Configurando um dividr entre linhas, para uma melhor visualização.
+        recyclerView.addItemDecoration(
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
     @Override

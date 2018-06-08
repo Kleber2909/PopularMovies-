@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PopularMovies</string>
+    <string name="app_name">Popular Movies</string>
 
     <string name="edtEmail">Email</string>
     <string name="edtPassword">Password</string>
@@ -20,5 +20,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_view_holder">ViewHolder</string>
+
+    <string name="txtListaFilmes">Filmes populares</string>
+    <string name="txtFavoritos">Adicionar esse título aos seus favoritos</string>
+    <string name="txtFavorites">Favoritos</string>
+    <string name="txtFilmes">Filmes</string>
 
 </resources>

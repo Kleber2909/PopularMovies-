@@ -2,6 +2,7 @@ package com.fa7.popularmovies;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,7 +22,6 @@ public class Login extends AppCompatActivity  {
     private FirebaseAuth firebaseAuth;
     EditText edLogin, edPassword;
     Button btnLogin;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
