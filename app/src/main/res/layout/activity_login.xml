@@ -9,6 +9,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -17,31 +18,43 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_filme" />
+            app:srcCompat="@drawable/movies" />
 
-        <ImageView
-            android:id="@+id/imageView"
+        <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_cinema" />
+            android:layout_height="8dp" />
 
         <EditText
             android:id="@+id/edEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/edtEmail" />
+            android:background="@drawable/border"
+            android:hint="@string/edtEmail"
+            android:inputType="textEmailAddress" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <EditText
             android:id="@+id/edPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            tools:text="@string/edtPassword" />
+            android:background="@drawable/border"
+            android:hint="@string/edtPassword"
+            android:inputType="textPassword" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <Button
             android:id="@+id/btLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/border_botton"
             android:text="@string/btnLogar" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

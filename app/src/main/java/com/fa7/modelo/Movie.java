@@ -23,6 +23,10 @@ public class Movie {
         this.overview = overview;
     }
 
+    public Movie(){
+
+    }
+
     public int getId() {
         return id;
     }

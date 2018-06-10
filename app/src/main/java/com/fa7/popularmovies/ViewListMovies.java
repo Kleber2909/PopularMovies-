@@ -67,7 +67,7 @@ public class ViewListMovies extends AppCompatActivity {
                                 startActivity(intent);
                                 break;
                             case R.id.mnLogin:
-                                intent = new Intent(getApplicationContext(), CriaLogin.class);
+                                intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(intent);
                                 break;
                         }

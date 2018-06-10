@@ -29,4 +29,7 @@ public interface MovieDAO {
     @Delete
     void delete(Movie movie);
 
+    @Query("DELETE FROM movie")
+    void deleteAll();
+
 }

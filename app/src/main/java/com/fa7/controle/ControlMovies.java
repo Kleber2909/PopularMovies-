@@ -1,11 +1,14 @@
 package com.fa7.controle;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.fa7.modelo.Movie;
+import com.fa7.persistence.AppDatabase;
+import com.fa7.persistence.MainDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -106,8 +109,27 @@ public class ControlMovies {
 
             @Override
             protected void onPreExecute () {
-                // Configurar barra de progresso.
+                // Progresso.
             }
 
+    }
+
+    public static void DeleteMovies(Context context){
+        new dbAsyncTask(context).execute();
+    }
+
+    private static class dbAsyncTask extends AsyncTask<Void, Void, Void> {
+        Context context;
+        public dbAsyncTask(Context context){
+            this.context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            AppDatabase appDatabase = MainDatabase.getInstance(context);
+            appDatabase.userDAO().deleteAll();
+
+            return null;
+        }
     }
 }

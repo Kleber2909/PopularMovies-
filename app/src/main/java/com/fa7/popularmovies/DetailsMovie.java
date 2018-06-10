@@ -16,8 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fa7.controle.ControlMovies;
+import com.fa7.controle.ControlUser;
 import com.fa7.modelo.Movie;
 import com.fa7.persistence.AppDatabase;
+import com.fa7.persistence.FireBasePersistence;
 import com.fa7.persistence.MainDatabase;
 import com.squareup.picasso.Picasso;
 
@@ -63,7 +65,7 @@ public class DetailsMovie extends AppCompatActivity {
                                 onBackPressed();
                                 break;
                             case R.id.mnLogin:
-                                intent = new Intent(getApplicationContext(), CriaLogin.class);
+                                intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(intent);
                                 onBackPressed();
                                 break;
@@ -75,6 +77,10 @@ public class DetailsMovie extends AppCompatActivity {
     }
 
     public void AddFavortitos(View view) throws InterruptedException {
+        new FireBasePersistence(new ControlUser(this)
+                .getUser(), getApplicationContext())
+                .DataOnFirebase(movie, true);
+
         new dbAsyncTask().execute();
         Thread.sleep(1000);
         super.onBackPressed();
@@ -90,6 +96,7 @@ public class DetailsMovie extends AppCompatActivity {
             {
                 appDatabase = MainDatabase.getInstance(getApplicationContext());
                 appDatabase.userDAO().insertAll(movie);
+
             }
 
             runOnUiThread(new Runnable() {

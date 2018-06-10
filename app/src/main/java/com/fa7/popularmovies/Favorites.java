@@ -19,8 +19,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.fa7.controle.ControlUser;
 import com.fa7.modelo.Movie;
 import com.fa7.persistence.AppDatabase;
+import com.fa7.persistence.FireBasePersistence;
 import com.fa7.persistence.MainDatabase;
 
 import java.util.List;
@@ -33,7 +35,7 @@ public class Favorites extends AppCompatActivity {
     Cursor cursor;
     AppDatabase appDatabase;
     BottomNavigationView btnNavigation;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +85,7 @@ public class Favorites extends AppCompatActivity {
                                 onBackPressed();
                                 break;
                             case R.id.mnLogin:
-                                intent = new Intent(getApplicationContext(), CriaLogin.class);
+                                intent = new Intent(getApplicationContext(), Login.class);
                                 startActivity(intent);
                                 onBackPressed();
                                 break;
@@ -111,6 +113,10 @@ public class Favorites extends AppCompatActivity {
                     if(movie != null)
                     {
                         try {
+                            new FireBasePersistence(new ControlUser(this)
+                                    .getUser(), getApplicationContext())
+                                    .DataOnFirebase(movie, false);
+
                             Runnable insert = new Runnable() {
                                 @Override
                                 public void run() {

@@ -15,25 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login" />
-        <activity android:name=".CriaLogin" />
-        <activity
-            android:name=".ListFilmes"
-            android:label="@string/title_activity_list_filmes"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Login">
+
+        </activity>
         <activity
             android:name=".ViewHolder"
             android:label="@string/title_activity_view_holder"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ViewListMovies">
+        <activity android:name=".ViewListMovies"></activity>
+        <activity android:name=".DetailsMovie" />
+        <activity android:name=".Favorites" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsMovie" />
-        <activity android:name=".Favorites"></activity>
     </application>
 
 </manifest>
