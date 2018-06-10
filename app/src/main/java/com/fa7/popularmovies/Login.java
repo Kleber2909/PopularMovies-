@@ -75,6 +75,7 @@ public class Login extends AppCompatActivity  {
                         if (task.isSuccessful()) {
                             Log.i("Login", "Logado com sucesso");
                             ControlUser.SaveUser(getApplicationContext(), user);
+                            ControlMovies.DeleteMovies(getApplicationContext());
                             new FireBasePersistence(new ControlUser(getApplicationContext())
                                     .getUser(), getApplicationContext())
                                     .SincFirebase();
